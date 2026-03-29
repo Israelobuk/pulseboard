@@ -1,22 +1,19 @@
-# Python
+.venv/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.pytest_cache/
+.mypy_cache/
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
 *.log
-
-# Virtual env
-.venv/
-venv/
-
-# Build artifacts
-build/
+*.tmp
+*.bak
+*.sqlite
+*.db
+*.zip
 dist/
-release/
-*.spec
-
-# OS / editor
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+build/
