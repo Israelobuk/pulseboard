@@ -2,10 +2,13 @@
 
 
 a = Analysis(
-    ['pulseboard.py'],
+    ['Pulseboard.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[
+        ('r_engine', 'r_engine'),
+        ('sql', 'sql'),
+    ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

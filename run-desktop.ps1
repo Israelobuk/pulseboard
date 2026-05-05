@@ -2,10 +2,20 @@ param()
 
 $ErrorActionPreference = "Stop"
 
-$localVenvPython = Join-Path $PSScriptRoot ".venv\\Scripts\\python.exe"
-if (Test-Path $localVenvPython) {
-    $pythonPath = $localVenvPython
-} else {
+$preferredVenvs = @(
+    (Join-Path $PSScriptRoot ".venv312\\Scripts\\python.exe"),
+    (Join-Path $PSScriptRoot ".venv\\Scripts\\python.exe")
+)
+
+$pythonPath = $null
+foreach ($candidate in $preferredVenvs) {
+    if (Test-Path $candidate) {
+        $pythonPath = $candidate
+        break
+    }
+}
+
+if (-not $pythonPath) {
     $pythonExe = Get-Command python -ErrorAction SilentlyContinue
     if (-not $pythonExe) {
         Write-Error "python was not found on PATH. Create a venv with: python -m venv .venv"
